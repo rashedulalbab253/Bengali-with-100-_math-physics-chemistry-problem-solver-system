@@ -1,0 +1,102 @@
+# 🧮 100+ Language Math Solver App
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet)](https://deepmind.google/technologies/gemini/)
+[![Firebase](https://img.shields.io/badge/Platform-Firebase-orange)](https://firebase.google.com/)
+
+A powerful, AI-driven mathematical problem solver designed to break language barriers. Whether it's a handwritten equation in an image or a complex word problem in Bengali, this app provides instant, step-by-step solutions in over 100 languages.
+
+---
+
+## ✨ Features
+
+- **🌍 100+ Language Support**: Solve math problems and get explanations in Bengali, Hindi, Spanish, French, Arabic, and many more.
+- **📸 AI Image Solver (OCR)**: Simply upload a photo or PDF of your math homework, and the AI will extract and solve the problem.
+- **🔢 Step-by-Step Solutions**: Don't just get the answer; understand the process with detailed walkthroughs.
+- **💡 "Explain Like I'm 5" Mode**: If the solution is too complex, one click gives you a simplified, easier-to-understand explanation focusing on core concepts.
+- **🎨 Premium UI**: A modern, responsive interface built with Tailwind CSS, featuring glassmorphism and smooth animations.
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend**: HTML5, Vanilla JavaScript, [Tailwind CSS](https://tailwindcss.com/)
+- **Backend API**: [FastAPI](https://fastapi.tiangolo.com/) (Python)
+- **AI Engine**: [Google Gemini 2.5 Flash](https://deepmind.google/technologies/gemini/)
+- **Cloud Platform**: [Docker Hub](https://hub.docker.com/) & GitHub Actions
+- **Monitoring**: Google Analytics
+
+---
+
+## 🛠️ Project Structure
+
+The project is organized into a clear Backend/Frontend separation:
+
+```text
+.
+├── backend/                # FastAPI Backend
+│   ├── main.py             # Server logic & Gemini integration
+│   ├── requirements.txt    # Python dependencies
+│   └── .env                # Gemini API Key (keep secure!)
+├── frontend/               # Plain HTML/CSS/JS Frontend
+│   ├── index.html          # Structure
+│   ├── style.css           # Styling
+│   └── script.js           # Frontend logic
+├── Dockerfile              # Docker image definition
+├── docker-compose.yml      # Local orchestration
+└── .github/workflows/      # CI/CD Pipeline
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 🚀 Getting Started (FastAPI + HTML/CSS)
+**Local Development:**
+1. Navigate to the backend directory: `cd backend`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Add your Gemini API Key to `.env`
+4. Run the server: `python main.py`
+
+**Frontend:**
+1. Open `frontend/index.html` in your browser.
+2. Ensure the `API_BASE_URL` in `script.js` matches your backend URL.
+
+### 🐳 Docker Deployment
+1. **Build the image**:
+   ```bash
+   docker build -t rashedulalbab1234/global-math-solver:latest .
+   ```
+2. **Run with Docker Compose**:
+   ```bash
+   docker-compose up -d
+   ```
+   *Note: Ensure your `.env` file is in `backend/` as it will be loaded by the container.*
+
+---
+
+## 🏗️ CI/CD (GitHub Actions)
+The project includes a GitHub Actions workflow to automatically build and push the Docker image to Docker Hub.
+1. **Secrets required** in your GitHub repository:
+   - `DOCKER_HUB_USERNAME`: `rashedulalbab1234`
+   - `DOCKER_HUB_ACCESS_TOKEN`: Your Docker Hub Access Token.
+2. The workflow triggers on every push to the `main` branch.
+
+## 🛡️ Security & Scalability
+- **Environment Variables**: API keys are stored in `.env` files and never exposed to the frontend.
+- **FastAPI**: Provides a robust, asynchronous backend capable of handling multiple concurrent requests.
+- **Gemini AI**: Uses the latest `gemini-2.5-flash` model for high-speed, accurate mathematical reasoning.
+
+---
+
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+**Built with ❤️ for students worldwide.**
