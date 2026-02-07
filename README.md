@@ -80,6 +80,21 @@ The project is organized into a clear Backend/Frontend separation:
 
 ---
 
+### ☁️ Deploy on Hugging Face Spaces (Free & Easy)
+1. **Create an Account**: Go to [huggingface.co](https://huggingface.co/) and sign up.
+2. **Create a New Space**:
+   * Click your profile picture -> **New Space**.
+   * **Name**: `global-stem-solver` (or similar).
+   * **License**: MIT.
+   * **SDK**: Select **Docker**.
+   * **Template**: Select **Blank**.
+3. **Upload Files**:
+   * Upload `Dockerfile`, `backend/`, `frontend/`, `requirements.txt` via web interface or git.
+4. **Add Secret**:
+   * Go to **Settings** -> **Variables and secrets**.
+   * New Secret -> Name: `GEMINI_API_KEY`, Value: `(Your Key)`.
+5. **Done!** Your app will build and launch automatically.
+
 ### ☁️ Deploy on Render
 1. Push your code to a GitHub repository.
 2. Log in to [Render](https://render.com/).
