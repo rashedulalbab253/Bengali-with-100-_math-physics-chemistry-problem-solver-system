@@ -80,6 +80,14 @@ The project is organized into a clear Backend/Frontend separation:
 
 ---
 
+### ☁️ Deploy on Render
+1. Push your code to a GitHub repository.
+2. Log in to [Render](https://render.com/).
+3. Click "New +" -> "Web Service".
+4. Connect your GitHub repository.
+5. Render will automatically detect the `render.yaml` or `Dockerfile` (if you choose Docker runtime).
+6. **Important**: Add your `GEMINI_API_KEY` in the "Environment" tab on Render dashboard.
+
 ## 🏗️ CI/CD (GitHub Actions)
 The project includes a GitHub Actions workflow to automatically build and push the Docker image to Docker Hub.
 1. **Secrets required** in your GitHub repository:

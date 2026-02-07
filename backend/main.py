@@ -140,6 +140,9 @@ except Exception as e:
 
 if __name__ == "__main__":
     import uvicorn
-    # Start the browser after 1.5 seconds once the server is likely up
-    threading.Timer(1.5, open_browser).start()
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Start the browser only if NOT in production (simple heuristic)
+    if not os.getenv("RENDER"):
+        threading.Timer(1.5, open_browser).start()
+    
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
