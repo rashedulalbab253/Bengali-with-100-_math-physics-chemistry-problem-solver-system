@@ -1,17 +1,22 @@
-# 🧮 100+ Language Math Solver App
+# 🧮 100+ Language STEM Solver (Math, Physics, Chemistry)
+**Developed by Rashedul Albab**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet)](https://deepmind.google/technologies/gemini/)
-[![Firebase](https://img.shields.io/badge/Platform-Firebase-orange)](https://firebase.google.com/)
+[![Docker](https://img.shields.io/badge/Container-Docker-blue)](https://www.docker.com/)
 
-A powerful, AI-driven mathematical problem solver designed to break language barriers. Whether it's a handwritten equation in an image or a complex word problem in Bengali, this app provides instant, step-by-step solutions in over 100 languages.
+A powerful, AI-driven **multimodal reasoning engine** designed to break language barriers in STEM education. Whether it's a handwritten calculus problem, a physics circuit diagram, or a chemical equation, this app provides instant, step-by-step solutions in **over 100 languages** (including Bengali, Hindi, English, etc.).
 
 ---
 
 ## ✨ Features
 
-- **🌍 100+ Language Support**: Solve math problems and get explanations in Bengali, Hindi, Spanish, French, Arabic, and many more.
-- **📸 AI Image Solver (OCR)**: Simply upload a photo or PDF of your math homework, and the AI will extract and solve the problem.
+- **🌍 100+ Language Support**: Explain complex concepts in your native language (Bengali, Hindi, Spanish, Arabic, etc.).
+- **🔬 Multi-Subject Mastery**:
+  - **Mathematics**: Algebra, Calculus, Geometry, Statistics.
+  - **Physics**: Mechanics, Thermodynamics, Electromagnetism, Quantum Physics.
+  - **Chemistry**: Stoichiometry, Organic Chemistry, Balancing Equations.
+- **📸 AI Image Solver (OCR)**: Simply upload a photo or PDF of your homework/diagram, and the AI will analyze and solve it.
 - **🔢 Step-by-Step Solutions**: Don't just get the answer; understand the process with detailed walkthroughs.
 - **💡 "Explain Like I'm 5" Mode**: If the solution is too complex, one click gives you a simplified, easier-to-understand explanation focusing on core concepts.
 - **🎨 Premium UI**: A modern, responsive interface built with Tailwind CSS, featuring glassmorphism and smooth animations.
