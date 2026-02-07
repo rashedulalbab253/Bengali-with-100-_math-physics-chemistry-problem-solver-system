@@ -55,10 +55,16 @@ async def solve_problem(request: SolveRequest):
     try:
         model = get_model()
         
-        solve_prompt_base = f"""TASK: You are a world-class STEM (Math, Physics, Chemistry) solver. Solve the problem completely using the shortest and easiest method (shortcut if possible). 
-        It is CRUCIAL to understand the FULL problem before generating the solution. Provide the step-by-step solution. 
-        Use simple math symbols (*, /, +) only, avoiding complex LaTeX/MathJax. 
-        Respond in {request.language} language."""
+        solve_prompt_base = f"""TASK: You are a world-class STEM (Math, Physics, Chemistry) solver. 
+        
+        REQUIREMENTS:
+        1. Solve the problem COMPLETELY using the shortest and easiest method
+        2. Provide step-by-step solution with ALL intermediate calculations
+        3. ALWAYS show the final numerical answer clearly at the end
+        4. Use simple math symbols (*, /, +, ^) only - NO LaTeX/MathJax
+        5. Respond in {request.language} language
+        
+        CRITICAL: You MUST complete ALL calculations and show the final answer. Do not stop mid-calculation."""
 
         contents = []
         
@@ -85,7 +91,7 @@ async def solve_problem(request: SolveRequest):
             contents,
             generation_config=genai.types.GenerationConfig(
                 temperature=0.0,
-                max_output_tokens=1500,
+                max_output_tokens=2500,
             )
         )
         

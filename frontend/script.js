@@ -1,5 +1,5 @@
 // Configuration
-const API_BASE_URL = "/api";
+const API_BASE_URL = "http://localhost:8000/api";
 
 // State
 let uploadedFileBase64 = null;
@@ -28,24 +28,34 @@ languageSelect.addEventListener('change', () => {
 // --- File Handling ---
 
 fileInput.addEventListener('change', async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        if (file.size > 10 * 1024 * 1024) { // 10MB limit for FastAPI (Gemini actually supports more)
-            alert("File size exceeds 10MB limit. Please choose a smaller image.");
-            clearFile();
-            return;
+    try {
+        const file = event.target.files[0];
+        if (file) {
+            // 10MB limit
+            if (file.size > 10 * 1024 * 1024) {
+                alert("File size exceeds 10MB limit. Please choose a smaller image.");
+                clearFile();
+                return;
+            }
+
+            // Update UI immediately
+            fileNameDisplay.textContent = 'File selected: ' + file.name;
+            fileNameDisplay.classList.remove('text-gray-500');
+            fileNameDisplay.classList.add('text-indigo-600', 'font-medium');
+            clearFileButton.disabled = false;
+
+            // Convert to Base64
+            uploadedFileBase64 = await fileToBase64(file);
+
+            // Auto-update input if empty
+            if (!mathInput.value.trim()) {
+                mathInput.value = 'Please solve the problem in this image.';
+            }
         }
-
-        fileNameDisplay.textContent = 'File selected: ' + file.name;
-        clearFileButton.disabled = false;
-
-        // Convert to Base64
-        uploadedFileBase64 = await fileToBase64(file);
-
-        // Auto-update input if empty
-        if (!mathInput.value.trim()) {
-            mathInput.value = 'Please solve the problem in this image.';
-        }
+    } catch (error) {
+        console.error("File selection error:", error);
+        alert("Failed to process file. Please try again.");
+        clearFile();
     }
 });
 
@@ -54,7 +64,11 @@ clearFileButton.addEventListener('click', clearFile);
 function clearFile() {
     uploadedFileBase64 = null;
     fileInput.value = '';
+
     fileNameDisplay.textContent = 'No file selected.';
+    fileNameDisplay.classList.add('text-gray-500');
+    fileNameDisplay.classList.remove('text-indigo-600', 'font-medium');
+
     clearFileButton.disabled = true;
     if (mathInput.value === 'Please solve the problem in this image.') {
         mathInput.value = '';
@@ -113,18 +127,25 @@ async function solveProblem(isExplainMode) {
             };
         }
 
+        console.log("🚀 Making API request to:", `${API_BASE_URL}${endpoint}`);
+        console.log("📦 Payload:", payload);
+
         const response = await fetch(`${API_BASE_URL}${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
 
+        console.log("📡 Response status:", response.status);
+
         if (!response.ok) {
             const error = await response.json();
+            console.error("❌ Server error response:", error);
             throw new Error(error.detail || "Server error occurred");
         }
 
         const data = await response.json();
+        console.log("✅ Success! Response data:", data);
         const resultText = isExplainMode ? data.explanation : data.solution;
 
         // Render result with simple line break replacement (since it's not markdown-enabled yet)
@@ -135,7 +156,7 @@ async function solveProblem(isExplainMode) {
         }
 
     } catch (error) {
-        console.error("API Error:", error);
+        console.error("❌ API Error:", error);
         outputDiv.innerHTML = `<span class="text-red-500 font-bold">Error:</span> ${error.message}. <br><br>Make sure the FastAPI backend is running!`;
     } finally {
         setLoading(false);
