@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧮 100+ Language STEM Solver (Math, Physics, Chemistry)
 **Developed by Rashedul Albab**
 
@@ -128,3 +129,16 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 **Built with ❤️ for students worldwide.**
+=======
+---
+title: R.albab Stem Problems Solver
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+>>>>>>> 25aa6a0214232cda74c489d8790c28a81011b41f
