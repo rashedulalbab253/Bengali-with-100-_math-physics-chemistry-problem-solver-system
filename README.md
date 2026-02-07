@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+
+
 # 🧮 100+ Language STEM Solver (Math, Physics, Chemistry)
 **Developed by Rashedul Albab**
 
